@@ -1,69 +1,105 @@
-# Better Find Bar
+# 🔍 Zen Better Find Bar (Native Update)
 
-Improves the find bar, making it floating with theme match and customization.
+A highly optimized, floating, and fully customizable Find Bar for [Zen Browser](https://zen-browser.app/).
 
 ![Mod preview showing the Zen Browser with the customized findbar below.](image.png)
 
-## Installation
+This repository is a customized fork of the original [Better Find Bar](https://github.com/RobotoSkunk/ff-better-findbar) by **RobotoSkunk**. It has been specifically modified to work **natively** within Zen Browser's internal theme engine, entirely bypassing the need for third-party mod managers like "Sine".
 
-> ### ⚠️ NOTICE FOR ZEN USERS ⚠️
-> The Zen Store repository has been archived, so I cannot update the mod in the
-> Zen Store. It's recommended using the other methods listed below to install
-> the mod along with its corresponding patches.
+Additionally, this version includes optimized CSS animations (hardware-accelerated) for a buttery-smooth experience when toggling the find bar.
 
-### Install Using Sine (Recommended)
-Sine is a community-driven mod/theme manager for all Firefox-based browsers.
+## ✨ Features
 
-#### Method 1 (Recommended)
-1. Download the latest stable version of Sine
-[from here](https://github.com/CosmoCreeper/Sine/releases) and install it.
+- **Floating Design:** Detaches the find bar from the bottom edge, giving it a modern floating look.
 
-2. Copy the repository URL (https://github.com/RobotoSkunk/ff-better-findbar)
-and paste it to get the latest updates of the mod.
-![a](resources/sine-method-1.png)
+- **Native Zen Integration:** Works directly with Zen Browser's built-in "Zen Mods" settings menu.
 
-#### Method 2
-> This method does not install the latest mod updates immediately, and updates
-> take a couple more days than with the first method.
+- **Hardware-Accelerated Animations:** Uses `will-change` and optimized cubic-bezier transitions to eliminate stuttering.
 
-1. Download the latest stable version of Sine
-[from here](https://github.com/CosmoCreeper/Sine/releases) and install it.
+- **Fully Customizable:** Adjust width, horizontal/vertical position, transparency, colors, and shadows directly via the UI.
 
-2. Search "Better Find Bar" in the marketplace search bar and install it.
-![a](resources/sine-method-2.png)
+- **Clean Interface:** Options to hide specific checkboxes (Match Case, Whole Words, etc.) or status labels.
 
-#### Manual Installation (Traditional Method)
-> This method requires a basic understanding of CSS variables to customize the
-> search bar.
+## 🤝 Credits
 
-1. Go to `about:profiles`, open `Root Directory`, then open or create a
-lowercase folder named `chrome`.
-2. Download the repository ZIP file.
-3. Extract the `userChrome.css` file from the ZIP file into the `chrome` folder.
-4. Customize the find bar with the custom preferences listed below.
+This project is built upon the fantastic work of **RobotoSkunk**.
 
-Firefox preferences
-```txt
-better_findbar.horizontal_position      -> String (left, center, right)
-better_findbar.vertical_position        -> String (top, bottom)
-better_findbar.transparent_background   -> Boolean
-better_findbar.enable_custom_background -> Boolean
-better_findbar.enable_custom_text_color -> Boolean
-better_findbar.enable_custom_box_shadow -> Boolean
-better_findbar.hide_highlight           -> String (not_hide, hide_immediately, hide_on_disable)
-better_findbar.hide_match_case          -> String (not_hide, hide_immediately, hide_on_disable)
-better_findbar.hide_match_diacritics    -> String (not_hide, hide_immediately, hide_on_disable)
-better_findbar.hide_whole_words         -> String (not_hide, hide_immediately, hide_on_disable)
-better_findbar.instant_animations       -> Boolean
-better_findbar.hide_find_status         -> Boolean
-better_findbar.hide_found_matches       -> Boolean
-```
+- Original Zen Port: [zen-better-findbar](https://github.com/RobotoSkunk/zen-better-findbar)
 
-CSS variables
-```css
-:root {
-    --better_findbar-custom_background: #aabbcc;
-    --better_findbar-custom_text_color: #112233;
-    --better_findbar-custom_box_shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-}
-```
+_Modifications in this fork include adapting `-moz-pref` variables to work natively with Zen's local JSON registries, applying performance tweaks to CSS transitions, and providing a direct local-install method._
+
+## 🛠️ Installation Guide
+
+Because Zen Browser's mod store typically forces updates from online URLs (overwriting local changes), a standard drag-and-drop installation doesn't fully work for customized local mods.
+
+Follow these steps to manually register this mod locally in your Zen profile.
+
+### Step 1: Locate your Zen Profile
+
+1. Open Zen Browser and type `about:profiles` in the URL bar.
+
+2. Look for the profile that says **"This is the profile in use and it cannot be deleted."** (Usually ends with `.Default (release)`).
+
+3. Next to **Root Directory**, click the **Open Directory** (or Show in Finder/Explorer) button.
+
+4. Close Zen Browser completely.
+
+### Step 2: Download and Place the Files
+
+1. Download this repository as a ZIP file and extract it.
+
+2. In your Zen profile directory, navigate to `chrome/zen-themes/`.
+   _(If these folders don't exist, create them)._
+
+3. Create a new folder named exactly: `zen-better-findbar-updated-native`
+
+4. Copy the following files from the extracted ZIP into that new folder:
+   - `chrome.css`
+
+   - `preferences.json`
+
+   _(Path should look like: `[...]/chrome/zen-themes/zen-better-findbar-updated-native/chrome.css`)_
+
+### Step 3: Edit the Zen Theme Registry (`zen-themes.json`)
+
+To enable the functionality in Zen for this mod in your local files, you need to edit its registry file.
+
+1. Go back to the **root** of your Zen profile directory (the one you opened in Step 1).
+
+2. Find the file named `zen-themes.json` and open it with a text editor (like VS Code, Notepad, or TextEdit).
+
+3. Add the following block to the JSON file. Ensure you place it correctly within the existing JSON structure (don't forget commas between multiple mods):
+
+   ```
+     "zen-better-findbar-updated-native": {
+       "id": "zen-better-findbar-updated-native",
+       "name": "Better Find Bar",
+       "description": "Floating find bar, customized to work natively in Zen Browser.",
+       "style": "chrome/zen-themes/zen-better-findbar-updated-native/chrome.css",
+       "preferences": "chrome/zen-themes/zen-better-findbar-updated-native/preferences.json",
+       "readme": "chrome/zen-themes/zen-better-findbar-updated-native/README.md",
+       "author": "RobotoSkunk & jaykobo",
+       "version": "1.8.0",
+       "enabled": true
+     }
+   ```
+
+   > **⚠️ Crucial Detail:** Notice how `"style"`, `"preferences"`, and `"readme"` use **local relative paths** instead of `https://...` links. This is the magic that makes the local mod work!
+
+4. Save the `zen-themes.json` file.
+
+### Step 4: Launch and Configure
+
+1. Start Zen Browser.
+
+2. Go to **Settings > Zen Mods** (or Themes).
+
+3. You should now see **Better Find Bar (1.8.0)** listed and enabled.
+
+4. Click the gear icon ⚙️ next to it to customize your colors, transparency, and positions.
+
+5. Press `Ctrl + F` (or `Cmd + F` on Mac) on any webpage to see your new, buttery-smooth find bar!
+
+## 🛠️ Troubleshooting
+
+In case the mod changes doesn't get applied - try to disable and re-enable it.
