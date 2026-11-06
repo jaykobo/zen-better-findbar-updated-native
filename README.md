@@ -58,6 +58,8 @@ Follow these steps to manually register this mod locally in your Zen profile.
 
    - `preferences.json`
 
+   - `README.md`
+
    _(Path should look like: `[...]/chrome/zen-themes/zen-better-findbar-updated-native/chrome.css`)_
 
 ### Step 3: Edit the Zen Theme Registry (`zen-themes.json`)
