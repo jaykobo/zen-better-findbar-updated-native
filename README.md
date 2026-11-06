@@ -71,20 +71,32 @@ To enable the functionality in Zen for this mod in your local files, you need to
 3. Add the following block to the JSON file. Ensure you place it correctly within the existing JSON structure (don't forget commas between multiple mods):
 
    ```
-     "zen-better-findbar-updated-native": {
-       "id": "zen-better-findbar-updated-native",
-       "name": "Better Find Bar",
-       "description": "Floating find bar, customized to work natively in Zen Browser.",
-       "style": "chrome/zen-themes/zen-better-findbar-updated-native/chrome.css",
-       "preferences": "chrome/zen-themes/zen-better-findbar-updated-native/preferences.json",
-       "readme": "chrome/zen-themes/zen-better-findbar-updated-native/README.md",
-       "author": "RobotoSkunk & jaykobo",
-       "version": "1.8.0",
-       "enabled": true
-     }
+   "zen-better-findbar-updated-native": {
+      "id": "zen-better-findbar-updated-native",
+      "name": "Better Find Bar",
+      "description": "Floating find bar, customized to work natively in Zen Browser without Sine.",
+      "homepage": "https://github.com/jaykobo/zen-better-findbar-updated-native",
+      "style": "https://raw.githubusercontent.com/jaykobo/zen-better-findbar-updated-native/refs/heads/main/chrome.css",
+      "readme": "https://raw.githubusercontent.com/jaykobo/zen-better-findbar-updated-native/refs/heads/main/README.md",
+      "image": "https://raw.githubusercontent.com/jaykobo/zen-better-findbar-updated-native/refs/heads/main/image.png",
+      "author": "RobotoSkunk & jaykobo",
+      "version": "1.8.0",
+      "preferences": "https://raw.githubusercontent.com/jaykobo/zen-better-findbar-updated-native/refs/heads/main/preferences.json",
+      "tags": [
+         "better",
+         "find",
+         "bar",
+         "search",
+         "findbar",
+         "searchbar",
+         "find-bar",
+         "search-bar"
+      ],
+      "createdAt": "2024-11-24",
+      "updatedAt": "2026-11-06",
+      "enabled": true
+   }
    ```
-
-   > **⚠️ Crucial Detail:** Notice how `"style"`, `"preferences"`, and `"readme"` use **local relative paths** instead of `https://...` links. This is the magic that makes the local mod work!
 
 4. Save the `zen-themes.json` file.
 
